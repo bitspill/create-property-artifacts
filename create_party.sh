@@ -22,36 +22,42 @@ PROP='response'
 PUB_SIG=`jsonval | cut -d ':' -f2 | cut -d '[' -f2 | cut -d ']' -f1`
 
 read -r -d '' PARTY_TEMPLATE << EOF
-{"oip-041": {"publish": {"artifact": { "timestamp": $TIMESTAMP,"type": "property","subtype": "party","publisher":"$PUBLISHER_ADDR"
-                "info": {
-                    "title": "Property Title",
-                    "description": "Useful description",
-                    "year": 2018,
-                    "tags": "",
-                    "ns": "DS",
-                    "partyRole": "citizen",
-                    "partyType": "naturalPerson",
-
-                    "attrs": [ ],
-                 "extraInfo": { }
-                },
-                "storage": {
-                    "network": "IPFS",
-                    "location": "$IPFS_LOCATION",
-                    "files": [
-                        {
-                            "fName": "$FNAME",
-                            "fSize": $FSIZE,
-                            "dName": "$DISPLAY_NAME",
-                            "fType": "$FTYPE",
-                            "cType": "$CONTENT_TYPE"
-                        }
-                    ]
-                },
-                "signature": "$PUB_SIG"
-            }
-        }
-    }
+{"oip-041":
+    {"artifact":
+      {
+        "timestamp": $TIMESTAMP,
+        "type": "property",
+        "subtype": "party",
+        "publisher":"$PUBLISHER_ADDR",
+        "info":
+          {
+            "title":"Property Title",
+            "description":"Useful description",
+            "year": 2018,
+            "tags": "party,test,demo",
+            "ns": "DS",
+            "partyRole": "citizen",
+            "partyType": "naturalPerson",
+            "attrs": [ ],
+            "extraInfo": { }
+          },
+         "storage":
+           {
+             "network":"IPFS",
+             "location":"$IPFS_LOCATION",
+             "files": [
+               {
+                 "fName":"$FNAME",
+                 "fSize":$FSIZE,
+                 "dName":"$DISPLAY_NAME",
+                 "fType": "$FTYPE",
+                 "cType": "$CONTENT_TYPE"
+               }
+             ]
+           }
+      },
+     "signature": "$PUB_SIG"
+     }
 }
 EOF
 
