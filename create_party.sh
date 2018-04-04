@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-PUBLISHER_ADDR=ocLS6Dneh2cgpbT2advQhsywFvi918Fp9V
+PUBLISHER_ADDR=oZZ7YtpY1RGHV65bdVJSu4ak7eneLjcYFv
 TIMESTAMP=`date +%s`
 IPFS_DIR="/ds-property/tmp-$RANDOM"
 ipfs files mkdir -p $IPFS_DIR
