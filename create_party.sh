@@ -10,7 +10,7 @@ OIP_HOST=http://35.230.92.250:41289
 TIMESTAMP=`date +%s`
 IPFS_DIR="/ds-property/tmp-$RANDOM"
 ipfs files mkdir -p $IPFS_DIR
-FNAME="document_$IPFS_DIR.txt"
+FNAME="document.txt"
 echo "Party Entity $IPFS_DIR placeholder text" | ipfs files write --create $IPFS_DIR/$FNAME
 IPFS_LOCATION=`ipfs files stat --hash $IPFS_DIR`
 FSIZE=`ipfs files stat --size $IPFS_DIR/$FNAME`
