@@ -1,18 +1,24 @@
 #!/usr/bin/env bash
-PARTY_ID=$1
+PUBLISHER_ADDR=$1
+if [ -z "$PUBLISHER_ADDR" ]
+then
+    PUBLISHER_ADDR=oZZ7YtpY1RGHV65bdVJSu4ak7eneLjcYFv
+fi
+
+PARTY_ID=$2
 if [ -z "$PARTY_ID" ]
 then
     PARTY_ID=dd0fad83b3f346dcd244dfb730dafade8940dd8ad2342acd31789e552da4743e
 fi
 
-SPAT_ID=$2
+SPAT_ID=$3
 if [ -z "$SPAT_ID" ]
 then
     SPAT_ID=0037bbf3895c9a0bd18ea92ab991a298f3703830261722df0e86d37cafe73520
 fi
 
 OIP_HOST=http://35.230.92.250:41289
-PUBLISHER_ADDR=oZZ7YtpY1RGHV65bdVJSu4ak7eneLjcYFv
+
 TIMESTAMP=`date +%s`
 IPFS_DIR="/ds-property/tmp-tenure-$RANDOM"
 ipfs files mkdir -p $IPFS_DIR

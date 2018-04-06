@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
 
 OIP_HOST=http://35.230.92.250:41289
-PUBLISHER_ADDR=oZZ7YtpY1RGHV65bdVJSu4ak7eneLjcYFv
+PUBLISHER_ADDR=$1
+if [ -z "$PUBLISHER_ADDR" ]
+then
+    PUBLISHER_ADDR=oZZ7YtpY1RGHV65bdVJSu4ak7eneLjcYFv
+fi
+
 TIMESTAMP=`date +%s`
 IPFS_DIR="/ds-property/tmp-su-$RANDOM"
 ipfs files mkdir -p $IPFS_DIR
