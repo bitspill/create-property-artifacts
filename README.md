@@ -12,6 +12,16 @@ chat](https://chat.alexandria.io) to know when this occurs.
 
 ## Quick instructions using the Bash scripts
 
+### Install IPFS
+
+1. Go to [IPFS website](https://ipfs.io/docs/install/) and install as directed for your platform.
+1. Make sure `ipfs` is on your PATH environment variable.
+1. Launch the IPFS daemon in its own terminal window.
+    ```bash
+    $ ipfs daemon
+    ```
+
+
 ### Create (or register) a new OIP Publisher
 
 1. Acquire a new FLO address that has some funds. 1 FLO is plenty.
@@ -20,11 +30,18 @@ chat](https://chat.alexandria.io) to know when this occurs.
     $ FLO_CONF="`pwd`/flo.conf"
     $ PUBLISHER_ADDRESS=`flo-cli -conf=$FLO_CONF getnewaddress ""` 
     ```
+
+1. Register a publisher in Open Index Protocol
+
+    ```bash
+    $ ./create_publisher.sh $PUBLISHER_ADDRESS
+    ```
+
 ### Create 2 Party Artifacts
 
 1. Use that address as the first argument of `create_party.sh`
     ```bash
-    $ ./create_party.sh $PUBLISHER_ADDRESS`
+    $ ./create_party.sh $PUBLISHER_ADDRESS
     Signing with this message: {"address":"oNrRcWEdNZeiqB7SLgrAemLftpLw7rjAGS","text":"QmW5msdWJstADw34Fs1UoiLheneLQ7mqdSXs23rBWeUqFr-oNrRcWEdNZeiqB7SLgrAemLftpLw7rjAGS-1523053433"}
       % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                      Dload  Upload   Total   Spent    Left  Speed
@@ -42,7 +59,7 @@ chat](https://chat.alexandria.io) to know when this occurs.
 1. Create another Party artifact and copy its txid.
 
     ```bash
-    $ /create_party.sh $PUBLISHER_ADDRESS
+    $ ./create_party.sh $PUBLISHER_ADDRESS
     Signing with this message: {"address":"oNrRcWEdNZeiqB7SLgrAemLftpLw7rjAGS","text":"Qmc1GPsecsoywCvW6RuCBq7mCDxEJJ2i7Lps2V9FcMPkpa-oNrRcWEdNZeiqB7SLgrAemLftpLw7rjAGS-1523053691"}
       % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                      Dload  Upload   Total   Spent    Left  Speed
@@ -96,7 +113,7 @@ chat](https://chat.alexandria.io) to know when this occurs.
 1. Use the `create_tenure.sh` script. The first command line parameter is the PUBLISHER_ADDRESS.
 
     ```bash
-    $ /create_tenure.sh $PUBLISHER_ADDRESS $PARTY_GROUP $SPATIAL_UNIT 
+    $ ./create_tenure.sh $PUBLISHER_ADDRESS $PARTY_GROUP $SPATIAL_UNIT 
     Signing with this message: {"address":"oNrRcWEdNZeiqB7SLgrAemLftpLw7rjAGS","text":"QmWQgYFPhN6MnkKamywvrVMW1JztrUKNQvvojMzMWTr1GW-oNrRcWEdNZeiqB7SLgrAemLftpLw7rjAGS-1523057759"}
       % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                      Dload  Upload   Total   Spent    Left  Speed
@@ -104,8 +121,8 @@ chat](https://chat.alexandria.io) to know when this occurs.
     {"oip-041":{"artifact":{"timestamp":1523057759,"type":"property","subtype":"tenure","publisher":"oNrRcWEdNZeiqB7SLgrAemLftpLw7rjAGS","info":{"title":"Property Tenure /ds-property/tmp-tenure-19501","description":"Property Tenure /ds-property/tmp-tenure-19501 description","year":2018,"tags":"tenure,test,demo","ns":"DS","tenureType":"freehold","party":"10279cd749a87174eb582b24d13c4d4eaec0e656bb009e29e89473da4b7a7a73","spatialUnit":"8d1649ffd1e6d96c2a039e035b726db6a70b436fa9b5a93ee87867b86a1c7325","attrs":[],"extraInfo":{}},"storage":{"network":"IPFS","location":"QmWQgYFPhN6MnkKamywvrVMW1JztrUKNQvvojMzMWTr1GW","files":[{"fName":"document_20373.txt","fSize":129,"dName":"Tenure Entity /ds-property/tmp-tenure-19501","fType":"Placeholder","cType":"text/plain"}]}},"signature":"IF1LKC7RS9w+Ie/v8KRjaSLihdtj4rgJynO3V0s2qZFBNk8TXzZtJzDTlZKQ/4PtNef/tuLkTdvi7kn5aKscsms="}}
     {"status":"success","response":["4ccf3f0ed6973a31ba9967fbb8e5f7f61e5ddd5a60f50fb2f807e220975b58ff","fc9b2b916926531684bd21ab0c4b06534584b466dca93998bdecbcf3615e4b90","59dbe6c2f996ffefc6d417086b15f946f21c7590933353ff570af547c127c753","9c397e723895850c9cb908882665718ba6bee9698df3fe70f7e53514a538a402"]}
     ```
-    
-1, Verify the spatial unit txid with either the testnet explorer or flo-cli.
+
+1. Verify the spatial unit txid with either the testnet explorer or flo-cli.
 
     ```bash
     $ flo-cli -conf=$FLO_CONF getrawtransaction "4ccf3f0ed6973a31ba9967fbb8e5f7f61e5ddd5a60f50fb2f807e220975b58ff" 1
