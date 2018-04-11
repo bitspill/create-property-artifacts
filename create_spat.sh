@@ -30,7 +30,7 @@ PROP='response'
 PUB_SIG=`jsonval | cut -d ':' -f2 | cut -d '[' -f2 | cut -d ']' -f1`
 
 read -r -d '' SPAT_TEMPLATE << EOF
-{"oip-041":{"artifact":{"timestamp":$TIMESTAMP,"type":"property","subtype":"spatialUnit","publisher":"$PUBLISHER_ADDR","info":{"title":"$SPAT_TITLE","description":"$SPAT_TITLE description","year":2018,"tags":"spatialUnit,test,demo","ns":"DS","geometry":{"type":"text","data":"Bounded by the alpha and beta rivers, iron hills to flame gulch"},"spatialType":"text","attrs":[],"extraInfo":{}},"storage":{"network":"IPFS","location":"$IPFS_LOCATION","files":[{"fName":"$FNAME","fSize":$FSIZE,"dName":"$DISPLAY_NAME","fType":"$FTYPE","cType":"$CONTENT_TYPE"}]}},"signature":"$PUB_SIG"}}
+{"oip042":{"publish":{"artifact":{"floAddress":"${PUBLISHER_ADDR}","timestamp":${TIMESTAMP},"type":"property","subtype":"spatialUnit","details":{"ns":"DS","geometry":{"type":"text","data":"Bounded by the alpha and beta rivers, iron hills to flame gulch"},"spatialType":"text","attrs":[]},"info":{"title":"${SPAT_TITLE}","description":"${SPAT_TITLE} Description","tags":"spatialUnit,test,demo,oip042"},"storage":{"network":"ipfs","location":"${IPFS_LOCATION}","files":[{"fName":"${FNAME}","fSize":${FSIZE},"dName":"${DISPLAY_NAME}","type":"${FTYPE}","cType":"${CONTENT_TYPE}"}]},"signature":"${PUB_SIG}"}}}}
 EOF
 
 echo "$SPAT_TEMPLATE"

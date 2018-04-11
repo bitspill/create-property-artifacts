@@ -1,4 +1,5 @@
 .idea/
+*.iml
 .swp
 ipfs/
 myargs.sh
